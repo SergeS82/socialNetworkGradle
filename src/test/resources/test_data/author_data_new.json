@@ -1,0 +1,96 @@
+{
+  "$class-AuthorDto": {
+    "$cmd-POST": {
+      "$return-200": [
+        {
+          "$dto-body": {
+            "id": "ssa_1",
+            "firstName": "Иван",
+            "lastName": "Иванов",
+            "mail": "ivanov@gmail.com",
+            "phone": "+79771111111",
+            "sex": "M",
+            "city": "Таганрог"
+          }
+        },
+        {
+          "$dto-body": {
+            "id": "ssa_2",
+            "firstName": "Пётр",
+            "lastName": "Петров",
+            "mail": "petrov@mail.ru",
+            "phone": "+79162222222",
+            "sex": "M",
+            "city": "Сочи"
+          }
+        },
+        {
+          "$dto-body": {
+            "id": "ssa_3",
+            "firstName": "Сидр",
+            "lastName": "Сидоров",
+            "mail": "sidorov@ya.ru",
+            "phone": "+7903333331",
+            "sex": "M",
+            "city": "Анапа"
+          }
+        },
+        {
+          "$dto-body": {
+            "id": "ssa_5",
+            "firstName": "Катерина",
+            "lastName": "Иванова",
+            "mail": "ivanova@list.ru",
+            "phone": "+7903333333",
+            "sex": "F",
+            "city": "Геленжик"
+          }
+        }
+      ],
+      "$return-000": [
+        {
+          "$dto-body": {
+            "id": "ssa_4",
+            "firstName": "Василий",
+            "lastName": "Васин",
+            "mail": "vasin_ya.ru",
+            "phone": "+7903333332",
+            "sex": "M",
+            "city": "Геленжик"
+          }
+        },
+        {
+          "$dto-body": {
+            "id": "ssa_6",
+            "firstName": "Хельга",
+            "lastName": "Петров",
+            "mail": "hpetrov_ya.ru",
+            "phone": "+7903333334",
+            "sex": "X",
+            "city": "Париж"
+          }
+        }
+      ]
+    },
+    "$cmd-DELETE": {
+      "$return-200": {
+        "$path-": "ssa_1"
+      }
+    },
+    "$cmd-PATCH": {
+      "$return-200": [
+        {
+          "$dto-body": {
+            "id": "ssa_5",
+            "firstName": "Катерина",
+            "lastName": "Иванова",
+            "mail": "ivanova@list.ru",
+            "phone": "+7903333333",
+            "sex": "F",
+            "city": "Геленжик"
+          }
+        }
+      ]
+    }
+  }
+}
