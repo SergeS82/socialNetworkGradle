@@ -15,7 +15,9 @@ public class AuthorController {
 
     @PostMapping
     public AuthorDto create(@RequestBody AuthorDto authorDto) {
+
         return service.createAuthor(authorDto);
+
     }
 
     @GetMapping("/{id}")

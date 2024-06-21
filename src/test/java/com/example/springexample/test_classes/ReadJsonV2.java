@@ -1,6 +1,5 @@
 package com.example.springexample.test_classes;
 
-import com.example.springexample.dto.*;
 import com.example.springexample.dto.lib.Dto;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,7 +14,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.*;
 
-class ReadJsonV2<T extends Dto> {
+class ReadJsonV2 {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         Logger logger = LoggerFactory.getLogger(ReadJsonV2.class);
@@ -23,19 +22,18 @@ class ReadJsonV2<T extends Dto> {
         logger.info(mainDataFile.getAbsolutePath()+" qwerty");
         ObjectMapper jsonMapper = new ObjectMapper();
         JsonNode rootNode = jsonMapper.readTree(mainDataFile);
-        ReadJsonV2<AuthorDto> dto = new ReadJsonV2<>(AuthorDto.class);
+        ReadJsonV2 dto = new ReadJsonV2();
         dto.read(rootNode);
     }
 
     private static final Logger logger = LoggerFactory.getLogger(ReadJsonV2.class);
     private int level = 0;
-    private Class<T> clazz;
-    Command<T> command = null;
-    List<Command<AuthorDto>> commands = new ArrayList<>();
 
-    public ReadJsonV2(Class<T> clazz) {
-        this.clazz = clazz;
-        command = new Command<T>(clazz);
+    Command command = null;
+    List<Command> commands = new ArrayList<>();
+
+    public ReadJsonV2() {
+        command = new Command();
     }
 
     public void read(JsonNode node) {
@@ -59,39 +57,53 @@ class ReadJsonV2<T extends Dto> {
                 JsonNode node_ = field.getValue();
                 try {
                     if (name.startsWith("$class-")) {
-
+                        String className = "com.example.springexample.dto.".concat(name.replaceFirst("^\\$class-", ""));
+                        command.setClazz(className);
                     } else if (name.startsWith("$cmd-")) {
                         command.setCommand(name.replace("$cmd-", "").toLowerCase(Locale.ROOT));
                     } else if (name.startsWith("$return-")) {
                         command.setResult(name.replace("$return-", "").toLowerCase(Locale.ROOT));
                     } else if (name.startsWith("$path-")) {
                         command.setPath(name.replace("$path-",""));
-                    } else if (name.startsWith("$dto-body")) {
-                        //command.setBody(node_);
+                    } else if (name.startsWith("$dto-body")) { // тело всегда идёт в конце
+                        command.setBody(node_);
+                        commands.add(command);
+                        command = new Command();
+                        return;
                     }
                 } catch (NewCommandException ex) {
-
+                    throw new IllegalStateException("Нарушена структура файла: ");
+                } catch (ClassCreateException ex) {
+                    throw new ClassCastException(ex.getMessage());
                 }
+                iterate(node_);
             }
         }
     }
 
-    static class Command<T extends Dto> {
-        private final Class<T> clazz;
+    static class Command {
+
+        private Class<? extends Dto> clazz = null;
         private String command;
         private String result;
         private String path;
-        private T body;
+        private Dto body;
         private String bodyStr;
 
-        public Command(Class<T> clazz) {
-            this.clazz = clazz;
+        public void setClazz(String clazz) throws NewCommandException, ClassCreateException {
+            if (this.clazz == null ) {
+                try {
+                    this.clazz = (Class<? extends Dto>) Class.forName(clazz);
+                } catch (ClassNotFoundException e) {
+                    throw new ClassCreateException("Не найден класс "+clazz);
+                }
+            } else {
+                throw new NewCommandException();
+            }
         }
 
-
-
         public void setCommand(String command) throws NewCommandException {
-            if (this.command.isEmpty()) {
+            if (this.command == null) {
                 this.command = command;
             } else {
                 throw new NewCommandException();
@@ -99,7 +111,7 @@ class ReadJsonV2<T extends Dto> {
         }
 
         public void setResult(String result) throws NewCommandException {
-            if (this.result.isEmpty()) {
+            if (this.result == null) {
                 this.result = result;
             } else {
                 throw new NewCommandException();
@@ -107,7 +119,7 @@ class ReadJsonV2<T extends Dto> {
         }
 
         public void setPath(String path) throws NewCommandException {
-            if (this.path.isEmpty()) {
+            if (this.path == null) {
                 this.path = path;
             } else {
                 throw new NewCommandException();
@@ -115,14 +127,18 @@ class ReadJsonV2<T extends Dto> {
 
         }
 
-        public void setBody(JsonNode node) throws NewCommandException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        public void setBody(JsonNode node) throws NewCommandException, ClassCreateException {
             if (this.body == null) {
-                Constructor<T> constructor = clazz.getConstructor();
-                T dto = constructor.newInstance();
-                Map<String, Object> subMap = new LinkedHashMap<>();
-                node.fields().forEachRemaining(entry -> subMap.put(entry.getKey(), entry.getValue().asText()));
-                dto.fillFromMap(subMap);
-                this.body = dto;
+                try {
+                    Constructor<? extends Dto> constructor = clazz.getConstructor();
+                    Dto dto = constructor.newInstance();
+                    Map<String, Object> subMap = new LinkedHashMap<>();
+                    node.fields().forEachRemaining(entry -> subMap.put(entry.getKey(), entry.getValue().asText()));
+                    dto.fillFromMap(subMap);
+                    this.body = dto;
+                } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+                    throw new ClassCreateException("Ошибка создания body: ".concat(e.getClass().getSimpleName()).concat(e.getMessage()));
+                }
             } else {
                 throw new NewCommandException();
             }
@@ -137,12 +153,22 @@ class ReadJsonV2<T extends Dto> {
         }
     }
 
+    // Нужное поле уже заполнено в объекте command, а следовательно пошло наполрнение нового элемента
     static class NewCommandException extends Exception {
         public NewCommandException() {
         }
-
         public NewCommandException(String message) {
             super(message);
         }
     }
+
+    // Отсутсвует нужный класс в директории com.example.springexample.dto
+    static class ClassCreateException extends Exception {
+        public ClassCreateException() {
+        }
+        public ClassCreateException(String message) {
+            super(message);
+        }
+    }
+
 }

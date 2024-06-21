@@ -1,5 +1,6 @@
 {
   "$class-AuthorDto": {
+    "$url": "author",
     "$cmd-POST": {
       "$return-200": [
         {

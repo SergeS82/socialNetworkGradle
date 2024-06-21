@@ -10,7 +10,7 @@ import java.util.Map;
 @Data
 @Getter
 @Setter
-public class AuthorDto implements Dto {
+public class AuthorDto implements Dto, Comparable<AuthorDto> {
     private String id;
     private String firstName;
     private String lastName;
@@ -18,4 +18,13 @@ public class AuthorDto implements Dto {
     private String phone;
     private Character sex;
     private String city;
+
+
+    @Override
+    public int compareTo(AuthorDto o) {
+        return (id == o.id
+                & firstName == o.firstName
+                & lastName == o.lastName
+                )?1:0;
+    }
 }

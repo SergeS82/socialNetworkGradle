@@ -17,6 +17,7 @@ public class AuthorCRUDService implements CRUDService<AuthorDto> {
     private final AuthorRepository repository;
 
     public AuthorCRUDService(AuthorRepository repository) {
+
         this.repository = repository;
     }
 
@@ -36,7 +37,9 @@ public class AuthorCRUDService implements CRUDService<AuthorDto> {
         repository.save(author);
     }
     public AuthorDto createAuthor(AuthorDto authorDto) {
+
         return mapToDto(repository.save(mapToEntity(authorDto)));
+
     }
 
     @Override

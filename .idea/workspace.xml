@@ -4,8 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="598f9833-1908-4d89-a44b-62d299265890" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/springexample/controllers/AllControllerTest.java" afterDir="false" />
+    <list default="true" id="598f9833-1908-4d89-a44b-62d299265890" name="Changes" comment="Перешел на Gradle">
+      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/springexample/controllers/AllControllersMockTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logback.log" beforeDir="false" afterPath="$PROJECT_DIR$/logback.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springexample/controllers/AuthorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springexample/controllers/AuthorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springexample/dto/AuthorDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springexample/dto/AuthorDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springexample/services/AuthorCRUDService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springexample/services/AuthorCRUDService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/springexample/controllers/AllControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/springexample/controllers/AllControllersIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/springexample/controllers/IntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/springexample/test_classes/ReadJsonV2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/springexample/test_classes/ReadJsonV2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/springexample/test_classes/TestEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/springexample/test_classes/TestEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/test_data/author_data_new.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/test_data/author_data_new.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,24 +55,6 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="socialNetworkGradle" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="socialNetworkGradle" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="socialNetworkGradle" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.springframework.boot:spring-boot-starter-data-jpa:2.6.3" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -70,6 +66,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -89,11 +86,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/com/example/springexample/controllers/AllControllerMockTest.java" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Console" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -106,21 +103,8 @@
       <recent name="com.example.springexample.controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ReadJsonV2">
-    <configuration name="ReadJsonV2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.springexample.test_classes.ReadJsonV2" />
-      <module name="socialNetworkGradle.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.springexample.test_classes.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AllControllerTest.authorTestScenario" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.AllControllerMockTest.testSomeEndpoint">
+    <configuration name="AllControllerMockTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -133,17 +117,17 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.springexample.controllers.AllControllerTest.authorTestScenario&quot;" />
+            <option value="&quot;com.example.springexample.controllers.AllControllerMockTest&quot;" />
           </list>
         </option>
-        <option name="vmOptions" />
+        <option name="vmOptions" value="-Dmockito.mock-maker=inline" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AuthorControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AllControllerMockTest.testSomeEndpoint" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -156,7 +140,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.springexample.controllers.AuthorControllerTest&quot;" />
+            <option value="&quot;com.example.springexample.controllers.AllControllerMockTest.testSomeEndpoint&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -166,7 +150,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AuthorControllerTest.authorTestScenario" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AllControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -179,7 +163,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.springexample.controllers.AuthorControllerTest.authorTestScenario&quot;" />
+            <option value="&quot;com.example.springexample.controllers.AllControllerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -189,7 +173,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AuthorControllerTest.create" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="YourControllerTest.testSomeEndpoint" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -202,7 +186,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.springexample.controllers.AuthorControllerTest.create&quot;" />
+            <option value="&quot;com.example.springexample.controllers.YourControllerTest.testSomeEndpoint&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -212,13 +196,41 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="socialNetworkGradle [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.AllControllerMockTest" />
+      <item itemvalue="Gradle.AllControllerTest" />
+      <item itemvalue="Gradle.socialNetworkGradle [build]" />
+      <item itemvalue="Gradle.YourControllerTest.testSomeEndpoint" />
+      <item itemvalue="Gradle.AllControllerMockTest.testSomeEndpoint" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ReadJsonV2" />
-        <item itemvalue="Gradle.AllControllerTest.authorTestScenario" />
-        <item itemvalue="Gradle.AuthorControllerTest.authorTestScenario" />
-        <item itemvalue="Gradle.AuthorControllerTest.create" />
-        <item itemvalue="Gradle.AuthorControllerTest" />
+        <item itemvalue="Gradle.AllControllerMockTest.testSomeEndpoint" />
+        <item itemvalue="Gradle.YourControllerTest.testSomeEndpoint" />
+        <item itemvalue="Gradle.AllControllerMockTest" />
+        <item itemvalue="Gradle.AllControllerTest" />
+        <item itemvalue="Gradle.socialNetworkGradle [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -231,6 +243,14 @@
       <option name="presentableId" value="Default" />
       <updated>1717530264283</updated>
     </task>
+    <task id="LOCAL-00001" summary="Перешел на Gradle">
+      <created>1718895502642</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718895502642</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -243,6 +263,46 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Перешел на Gradle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Перешел на Gradle" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/springexample/test_classes/ReadJsonV2.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/springexample/test_classes/ReadJsonV2.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/springexample/test_classes/TestEntity.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/springexample/controllers/AuthorController.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/springexample/services/AuthorCRUDService.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/springexample/dto/AuthorDto.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
