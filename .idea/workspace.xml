@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="598f9833-1908-4d89-a44b-62d299265890" name="Changes" comment="Разобрался с мокированием сервисов">
+    <list default="true" id="598f9833-1908-4d89-a44b-62d299265890" name="Changes" comment="Выполнил настройку SourceSets. Добавил в build зависимость от интергационного теста.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logback.log" beforeDir="false" afterPath="$PROJECT_DIR$/logback.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springexample/dto/AuthorDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springexample/dto/AuthorDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/springexample/controllers/AllControllersIntegrationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/springexample/controllers/AllControllersMockTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/springexample/test_classes/ReadJson.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/springexample/test_classes/ReadJsonV2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/springexample/test_classes/TestEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/test_data/author_data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/test_data/author_data_new.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/test_data/subscription_data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

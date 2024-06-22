@@ -1,0 +1,45 @@
+C:\Program Files\PostgreSQL\15\bin>PG_ctl start -D "C:\Program Files\PostgreSQL\15\data"
+[git]
+ssh-keygen -t rsa -b 4096 -C "bazantmail@gmail.com"		-- сгенерировать ключ
+[docker]
+docker run -d -p 80:80 docker/getting-started 			-- запустить образ
+docker images							-- список установленных образов
+docker --help							-- помосч
+docker save 5b0542ad1e77 > redis_latest.tar			-- экспортировать образт в
+docker rmi -f 5b0542ad1e77					-- удалить образ
+docker load < redis_latest.tar					-- импортировать образ из tar файла
+docker tag 5b0542ad1e77 redis:latest				-- восстановить значения REPOSITORY и TAG
+docker ps							-- список активных контейнеров
+docker port 191eb07f8cc1					-- узнать порт запущеного контейнера
+docker exec -it 191eb07f8cc1 sh					-- подключиться к контейнеру
+docker logs 191eb07f8cc1					-- лог запущеного контейнера
+docker-compose up --build					-- запуск всех сервисов описанных в docker-compose.yaml
+-- push в репозиторий
+docker tag docker/getting-started serg82/dotnet:latest		-- поставили метку
+docker images							-- проверить что образ появился
+docker push sergs82/dotnet					-- выложить контейнер
+--
+docker build -t socialnetwork-db .				-- создание образа с использованием файла Docker
+docker build -t sergs82/socialnetwork-jar .			-- -- создание образа с использованием файла Docker
+docker run -d --name postgres-container -p 5432:5432 -e POSTGRES_PASSWORD=root -e POSTGRES_USER=admin sergs82/socialnetwork-db:latest
+docker run -d --name postgres-container --network my_custom_bridge -e POSTGRES_PASSWORD=root -e POSTGRES_USER=admin sergs82/socialnetwork-db:latest
+docker run -d --name jre-container --network my_custom_bridge -p 8080:8080 -e TZ=UTC -e DB_SN_HOST="POSTGRES-CONTAINER" sergs82/socialnetwork-jar:latest
+-- запуск в интерактивном режиме с удалением контейнера после окончания
+run -it --rm --name=postgres-container --network=my_custom_bridge -e POSTGRES_PASSWORD=root -e POSTGRES_USER=admin
+sergs82/socialnetwork-db:latest ash
+-- динамически переключить контейнер на нужную сеть
+docker network connect my_custom_bridge postgres-container
+-- .. проверка связи между контейнерами
+ping postgres-container
+--network
+....bridge
+docker network ls
+docker network create --driver bridge my_custom_bridge
+docker run -d --network=my_custom_bridge my_image
+docker network inspect my_custom_bridge
+....host
+docker run -d --network=host my_image
+-- PowerShell
+setx DB_SN_HOST "127.0.0.1"		- установить значение окружения, для текущего пользователя
+setx DB_SN_HOST "127.0.0.1" /M		-//- для всей системы
+

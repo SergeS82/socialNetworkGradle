@@ -1,0 +1,31 @@
+version: '3'
+networks:
+  my_custom_bridge:
+    driver: bridge
+services:
+  db: 
+    container_name: postgres-container
+    image: sergs82/socialnetwork-db:latest
+    networks:
+      - my_custom_bridge
+    volumes:
+      - "/tmp/socialnetwork:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_DB: socialnetwork
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: admin
+    restart: unless-stopped
+  jre:
+    container_name: jre-container
+    image: sergs82/socialnetwork-jar:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - my_custom_bridge
+    environment:
+      TZ: "UTC"
+      DB_SN_HOST: "POSTGRES-CONTAINER"
+      DB_SN_PORT: "5432"
+    restart: unless-stopped
+    depends_on:
+      - db
