@@ -2,6 +2,43 @@ plugins {
     id 'org.springframework.boot' version '2.6.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'com.dorongold.task-tree' version '2.1.0'
+}
+
+sourceSets {
+    // Общие классы для тестов
+    common {
+        java {
+            srcDir 'src/test/common/java'
+        }
+        resources {
+            srcDir 'src/test/common/resources'
+        }
+        compileClasspath += sourceSets.main.output + configurations.testRuntimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+    // Модульные тесты
+    test {
+        java {
+            srcDir 'src/test/unit/java'
+        }
+        resources {
+            srcDir 'src/test/unit/resources'
+        }
+        compileClasspath += sourceSets.common.output
+        runtimeClasspath += sourceSets.common.output
+    }
+    // Интеграционные тесты
+    integrationTest {
+        java {
+            srcDir 'src/test/integration/java'
+        }
+        resources {
+            srcDir 'src/test/integration/resources'
+        }
+        compileClasspath += sourceSets.main.output + configurations.testRuntimeClasspath + sourceSets.common.output
+        runtimeClasspath += output + compileClasspath
+    }
 }
 
 group 'org.example'
@@ -18,11 +55,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'jakarta.persistence:jakarta.persistence-api:2.2.3'
     runtimeOnly 'org.postgresql:postgresql:42.6.0'
+    //
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.testcontainers:testcontainers:1.19.7'
-    testImplementation group: 'org.springframework.restdocs', name: 'spring-restdocs-mockmvc', version: '2.0.6.RELEASE'
-    //testImplementation 'org.mockito:mockito-core:3.11.2'
-    //testImplementation 'org.mockito:mockito-junit-jupiter:3.11.2'
+    //
+    integrationTestImplementation 'org.springframework.boot:spring-boot-starter-test'
+    integrationTestImplementation 'org.testcontainers:testcontainers:1.19.7'
+    //integrationTestImplementation group: 'org.springframework.restdocs', name: 'spring-restdocs-mockmvc', version: '2.0.6.RELEASE'
+    //
 }
 
 java {
@@ -34,6 +73,22 @@ springBoot {
     buildInfo()
 }
 
+task integrationTest(type: Test) {
+    description = 'Runs integration tests.'
+    group = 'verification'
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    shouldRunAfter test
+}
+
 test {
     useJUnitPlatform()
+}
+
+integrationTest {
+    useJUnitPlatform()
+}
+
+check {
+    dependsOn integrationTest
 }
