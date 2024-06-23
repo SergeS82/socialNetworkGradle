@@ -1,0 +1,42 @@
+**Установить choco**
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+**Установить minikube**
+    choco install minikube
+**Установить kubectl**
+    choco install kubernetes-cli
+**Запустить minikube**
+    minikube start --driver=hyperv
+**Проверить статус**
+    minikube status
+**Параметры minikube**
+    minikube docker-env
+**Перенаправить команды docker в текущем Power Shell терминале в minikube**
+    & minikube -p minikube docker-env --shell powershell | Invoke-Expression
+**Переключение на контекст кластера minikube. Для управления несколькими кластерами**
+    kubectl config use-context minikube
+**Создать ресурс с типом deployment из Docker-образа**
+    kubectl create deployment database --image=sergs82/socialnetwork-db:latest
+**Создать ресурс с типом service для подов деплоймента database с открытием порта в подах с типом ClusterIP**
+    kubectl expose deployment database --port=5432
+**Отобразить список ресурсов с типом Deployment**
+    kubectl get deployments.apps
+**Отобразить список ресурсов с типом ReplicaSet**
+    kubectl get replicasets
+**Отобразить список ресурсов с типом Pod**
+    kubectl describe pod database-8558796b87-mb9rj
+**Отобразить лог пода**
+    kubectl logs database-8558796b87-mb9rj
+**Задать значение переменной окружения для ресурса datebase**
+    kubectl set env datebase POSTGRES_DB=socialnetwork
+**Dashboard minikube**
+    minikube dashboard
+**получить внешний адрес к определённому сервисуц кластера, особеность minikube**
+    minikube service app-service
+**Отобразить весь список ресурсов кластера**
+    kubectl get all
+**Создать ресурс из настроек**
+    kubectl apply -f app-deployment.yaml
+**Удалить ресурс с типом service и именем database-service**
+    kubectl delete service database-service
+**Задать количество реплик для ресурса**
+    kubectl scale --replicas=3 deployment/app

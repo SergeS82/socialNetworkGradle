@@ -1,45 +1,50 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: app-deploymenyt
-  labels:
+apiVersion: apps/v1 #  указывает версию API, используемую для создания объекта Deployment.
+kind: Deployment # тип ресурса
+metadata: # метаданные
+  name: app-deploymenet # имя ресурса
+  labels: # добавление меток, видимо для связи с сервисом
     app: app
-spec:
-  replicas: 2
-  selector: 
+spec: # спецификация
+  replicas: 2 # количество подов, которые должны быть запущены
+  selector: # набор подов который контролируетчся этим Deployment. В данном случае 1 к одному
     matchLabels: 
       app: app
-  template:
+  template: # шаблон для создания подов
     metadata:
-      labels:
+      labels: # метки подов
         app: app
-    spec: 
-      containers:
-      - name: app
-        image: sergs82/socialnetwork-jar:latest
-        ports:
+    spec: # спецификация для контейнеров внутри подов
+      containers: # список контейнеров
+      - name: app # имя контейнера
+        image: sergs82/socialnetwork-jar:latest # Docker образ для создания контейнера
+        ports: # список портов открытых в контейнере
         - containerPort: 8080
-        env:
+        env: # переменные среды для контейнера
           - name: TZ
             value: "UTC"
           - name: DB_SN_PORT
             value: "5432"
           - name: DB_SN_HOST
             valueFrom:
-              configMapKeyRef: 
-                name: database-config
-                key: DB_SN_HOST
+              configMapKeyRef: # ссылка на configMap
+                name: database-config # имя ConfigMap
+                key: DB_SN_HOST # ключ в ConfigMap
 ---
 apiVersion: v1
-kind: Service
-metadata:
-  name: app-service
-spec:
-  type: LoadBalancer
-  selector:
-    app: app
-  ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 8080
-      nodePort: 30000
+kind: Service # тип ресурса
+metadata: # блок метаданных
+  name: app-service # имя сервиса
+spec: # cпецификация, описывающая щелаемое состояние объекта
+  #(ClusterIP - доступ только внитри кластера
+  #, NodePort - открывает определённый порт на всех узлах кластера (без внешнего балансировщика нагрузки)
+  #, LoadBalancer - тоже внешний, но с внешним балансировщиком нагрузки
+  #, ExternalName - не создаёт реальных внешних ip-адресов. Связывает сервис с внешним DNS-именем
+  #)
+  type: LoadBalancer # тип сервиса
+  selector: # список подов обслуживаемых этим сервисом
+    app: app # мерка пода
+  ports: # список портов по которому доступен сервис
+    - protocol: TCP # протокол
+      port: 8080 # порт сервиса, внешний порт по которому доступен под
+      targetPort: 8080 # внутренний порт пода
+      nodePort: 30000 # порт во вне кластера

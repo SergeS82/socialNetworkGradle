@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="598f9833-1908-4d89-a44b-62d299265890" name="Changes" comment="Выполнил настройку SourceSets. Добавил в build зависимость от интергационного теста.">
+    <list default="true" id="598f9833-1908-4d89-a44b-62d299265890" name="Changes" comment="Добавил настройки k8s">
+      <change afterPath="$PROJECT_DIR$/minikube/Команды.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minikube/типы ресурса Service.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minikube/типы ресурсов kubernetes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logback.log" beforeDir="false" afterPath="$PROJECT_DIR$/logback.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minikube/manifests/app-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/minikube/manifests/app-deployment.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +89,9 @@
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\79778\OneDrive\Рабочий стол\проект\socialNetworkGradle\minikube" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.example.springexample.controllers" />
@@ -244,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1719005872269</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Добавил настройки k8s">
+      <created>1719084208361</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1719084208361</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -261,7 +275,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Перешел на Gradle" />
     <MESSAGE value="Разобрался с мокированием сервисов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Разобрался с мокированием сервисов" />
+    <MESSAGE value="Добавил настройки k8s" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил настройки k8s" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
